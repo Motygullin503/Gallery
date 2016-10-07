@@ -51,7 +51,7 @@ public class RxVk {
                 listener.requestFinished(vkApiUsers);
             }
         });
-        pGetFriends(VKParameters.from("order", "hints", "fields", "name, photo_50, photo_max, online"))
+        pGetFriends(VKParameters.from("order", "hints", "fields", "name, photo_50, photo_max_orig, online"))
                 .subscribe(friendsSubscriber);
 
     }
@@ -114,7 +114,7 @@ public class RxVk {
                                     friend.setSurname(user.last_name);
                                     friend.setOnline(user.online);
                                     friend.setSmallPhotoUrl(user.photo_50);
-                                    friend.setMaxPhotoUrl(user.photo_max);
+                                    friend.setMaxPhotoUrl(user.photo_max_orig);
                                     friends.add(friend);
                                 }
                                 return Observable.just(friends);
